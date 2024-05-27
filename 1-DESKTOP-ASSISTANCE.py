@@ -79,6 +79,9 @@ if __name__ == "__main__":
             codePath = "C:\\Users\\panch\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             os.startfile(codePath)
 
+        elif 'open github' in query:
+            webbrowser.open("github.com")
+
         elif 'quit' in query:
             speak("Thank you for using me. Have a nice day!")
             quit()
