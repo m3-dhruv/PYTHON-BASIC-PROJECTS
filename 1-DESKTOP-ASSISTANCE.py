@@ -3,6 +3,8 @@ import pyttsx3 # type: ignore
 import speech_recognition as sr  # type: ignore
 import datetime
 import wikipedia
+import webbrowser
+import os
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -20,8 +22,8 @@ def wishMe():
         speak("Good Afternoon Boss!")
     else:
         speak("Good Evening Boss!")
-
-    speak("I am Jarvis. Please tell me how can i help you !")
+        
+    speak("I am Jarvis. Please tell me how may I help you")
 
 def takeCommand():
     r = sr.Recognizer()
@@ -53,3 +55,32 @@ if __name__ == "__main__":
             speak("According to Wikipedia")
             print(results)
             speak(results)
+        
+        elif 'open youtube' in query:
+            webbrowser.open("youtube.com")
+        
+        elif 'open google' in query:
+            webbrowser.open("google.com")
+
+        elif 'open stackoverflow' in query:
+            webbrowser.open("stackoverflow.com")
+
+        elif 'play music' in query:
+            music_dir = 'C:\\Users\\HP\\Music\\Songs'
+            songs = os.listdir(music_dir)
+            print(songs)
+            os.startfile(os.path.join(music_dir, songs[0]))
+        
+        elif 'the time' in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            speak(f"Boss, The time is {strTime}")
+
+        elif 'open vs code' in query:
+            codePath = "C:\\Users\\panch\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            os.startfile(codePath)
+
+        elif 'quit' in query:
+            speak("Thank you for using me. Have a nice day!")
+            quit()
+
+        
